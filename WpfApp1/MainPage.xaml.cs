@@ -161,7 +161,7 @@ namespace WpfApp1
             Order order = new Order();
             order.OrderList = id.ToString();
             order.DateOrder = DateTime.Now;
-            order.DeliveryDate = DateTime.MinValue;
+            order.DeliveryDate = DateTime.UtcNow;
             order.IDPointOfIssue = Random.Next(1,36);
             order.FIO = MainWindow.User.FIO;
             order.Code = Convert.ToString(Random.Next(121,150));
@@ -169,6 +169,13 @@ namespace WpfApp1
             DeckorEntities.GetContext().Order.Add(order);
             DeckorEntities.GetContext().SaveChanges();
             MessageBox.Show("Успешно заказано!!");
+        }
+
+        private void btnOrder_Click(object sender, RoutedEventArgs e)
+        {
+            OrderWindow order = new OrderWindow();
+            order.Show();
+            Close();
         }
     }
 }

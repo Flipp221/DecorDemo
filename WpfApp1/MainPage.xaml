@@ -151,5 +151,11 @@
   materialDesign:HintAssist.Hint="Сортировака"
   ItemsSource="{Binding ShortStringList}"
   materialDesign:TextFieldAssist.HasClearButton="True" Width="204" Height="50" SelectionChanged="SortCB_SelectionChanged"/>
+        <Button
+            Style="{StaticResource MaterialDesignPaperDarkButton}"
+            x:Name="btnOrder"
+            ToolTip="Resource name: MaterialDesignPaperDarkButton"
+            Content="Посмотреть заказы"
+            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="61,11,10,10" Grid.Row="2" Cursor="Hand"  Grid.Column="1" Click="btnOrder_Click" />
     </Grid>
 </Window>
