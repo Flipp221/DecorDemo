@@ -20,6 +20,7 @@ namespace WpfApp1
     /// </summary>
     public partial class MainPage : Window
     {
+        Random Random = new Random();
         public MainPage()
         {
             InitializeComponent();
@@ -151,6 +152,23 @@ namespace WpfApp1
             }
             tovars = MainWindow.db.Tovars.Where(z => z.TypeT.Name == item).ToList();
             TovarsList.ItemsSource = tovars;
+        }
+
+        private void btnZakaz_Click(object sender, RoutedEventArgs e)
+        {
+            var id = Convert.ToInt32(((Button)sender).CommandParameter);
+            var a = MainWindow.db.Tovars.Where(x => x.IdT == id).FirstOrDefault();
+            Order order = new Order();
+            order.OrderList = id.ToString();
+            order.DateOrder = DateTime.Now;
+            order.DeliveryDate = DateTime.MinValue;
+            order.IDPointOfIssue = Random.Next(1,36);
+            order.FIO = MainWindow.User.FIO;
+            order.Code = Convert.ToString(Random.Next(121,150));
+            order.Status = "Новый";
+            DeckorEntities.GetContext().Order.Add(order);
+            DeckorEntities.GetContext().SaveChanges();
+            MessageBox.Show("Успешно заказано!!");
         }
     }
 }

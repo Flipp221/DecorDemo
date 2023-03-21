@@ -105,6 +105,7 @@
                             </StackPanel>
                             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Orientation="Horizontal">
                                 <Button Margin="0,4,0,5" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#1F2833" x:Name="RedBtn" Content="Редактировать"  Width="130" Click="Red_Click"/>
+                                <Button Margin="0,4,0,5" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#1F2833" x:Name="btnZakaz" Content="Заказать" CommandParameter="{Binding IdT}" Width="130" Click="btnZakaz_Click"/>
                             </StackPanel>
                         </StackPanel>
                     </Border>
