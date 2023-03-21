@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e739e1151afd41cbb79467acb65e8daa" Name="Diagram1">
+        <EntityTypeShape EntityType="DeckorModel.Order" Width="1.5" PointX="5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeckorModel.PointOfIssue" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeckorModel.Postavshik" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeckorModel.Proizvoditel" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeckorModel.Roles" Width="1.5" PointX="5.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeckorModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeckorModel.Tovars" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeckorModel.TypeT" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeckorModel.Users" Width="1.5" PointX="8" PointY="2.375" IsExpanded="true" />
+        <AssociationConnector Association="DeckorModel.FK_Order_PointOfIssue" ManuallyRouted="false" />
+        <AssociationConnector Association="DeckorModel.FK_Tovars_Postavshik" ManuallyRouted="false" />
+        <AssociationConnector Association="DeckorModel.FK_Tovars_Proizvoditel" ManuallyRouted="false" />
+        <AssociationConnector Association="DeckorModel.FK_Users_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="DeckorModel.FK_Tovars_TypeT" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

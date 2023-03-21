@@ -1,0 +1,154 @@
+﻿<Window x:Class="WpfApp1.MainPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1" xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="MainPage" MinHeight="680" MinWidth="980" Width="950" Height="650" IsVisibleChanged="Mouse_IsVisibleChanged">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="1.5*"/>
+            <RowDefinition  Height="10*" />
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <TextBox 
+            TextAlignment="Left"
+            HorizontalContentAlignment="Left"
+            VerticalContentAlignment="Center"
+                 x:Name="Poisk" 
+                 Grid.Column="0"
+                 TextChanged="Poisk_TextChanged" Margin="10,12,10,22">
+            <TextBox.Style>
+                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                    <Style.Resources>
+                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                            <VisualBrush.Visual>
+                                <Label Content="Введите для поиска" Foreground="LightGray" />
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Style.Resources>
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+
+        <ListView x:Name="TovarsList" Margin="30, 0, 20, 0"
+                  Grid.Row="1" Grid.ColumnSpan="3" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black" BorderThickness="1" Height="auto" Width="auto">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" >
+                                <Image  Height="90" Width="90" Margin="15" x:Name="PictureI" Source="{Binding Image}"/>
+                            </StackPanel>
+
+                            <StackPanel >
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="3" VerticalAlignment="Top">
+                                    <Label Content="Тип товара:" FontWeight="Bold"/>
+                                    <TextBlock Margin="0,4,0,0" FontWeight="Bold" Text="{Binding TypeT.Name}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="1" VerticalAlignment="Top">
+                                    <TextBlock Margin="0,-27,-10,0" FontWeight="Bold" Text="|"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Цена:"/>
+                                    <TextBlock Margin="0,4,0,0" Text="{Binding Price}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Возможная скидка:"/>
+                                    <TextBlock Margin="0,4,0,0" Text="{Binding PossibleDiscount}"/>
+                                    <TextBlock Margin="0,4,0,0" Text="%"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Производитель:"/>
+                                    <TextBlock Margin="0,4,0,0" Text="{Binding Proizvoditel.Name}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Поставщик:"/>
+                                    <TextBlock Margin="0,4,0,0" Text="{Binding Postavshik.Name}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Скидка:"/>
+                                    <TextBlock Margin="0,4,0,0" Text="{Binding Discount}"/>
+                                    <TextBlock Margin="0,4,0,0" Text="%"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Кол-во на складе:"/>
+                                    <TextBlock Margin="0,4,0,0" Text="{Binding CountStock}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Описание:"/>
+                                    <TextBlock Margin="0,4,0,0" Text="{Binding Description}"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="3" VerticalAlignment="Top">
+                                <Label Content="Наименование:" FontWeight="Bold"/>
+                                <TextBlock Margin="0,4,0,0" FontWeight="Bold" Text="{Binding Name}"/>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Orientation="Horizontal">
+                                <Button Margin="0,4,0,5" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#1F2833" x:Name="RedBtn" Content="Редактировать"  Width="130" Click="Red_Click"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button
+            Visibility="Hidden"
+  Style="{StaticResource MaterialDesignPaperDarkButton}"
+  Width="150"
+  x:Name="AddBtn"
+  ToolTip="Resource name: MaterialDesignPaperDarkButton"
+  Content="Добавить"
+  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="10,8,290,7" Grid.Row="2" Click="AddBtn_Click" Cursor="Hand" />
+        <Button
+            Visibility="Hidden"
+            Style="{StaticResource MaterialDesignPaperDarkButton}"
+            Width="150"
+            x:Name="DeleteBtn"
+            ToolTip="Resource name: MaterialDesignPaperDarkButton"
+            Content="Удалить"
+            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="200,8,100,7" Grid.Row="2" Cursor="Hand" Click="DeleteBtn_Click" />
+        <Button
+            Style="{StaticResource MaterialDesignPaperDarkButton}"
+            x:Name="BackBtn"
+            ToolTip="Resource name: MaterialDesignPaperDarkButton"
+            Content="Назад"
+            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="10,10,118,9" Grid.Row="2" Cursor="Hand"  Grid.Column="2" Click="BackBtn_Click" />
+        <TextBox x:Name="tbFIO" Height="33" HorizontalAlignment="Left" FontSize="14" Foreground="#A5E887" FontStyle="Italic" FontWeight="Heavy" Margin="188,10,0,0"  VerticalAlignment="Top" Width="250" Background="White" FontStretch="UltraCondensed" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"/>
+        <ComboBox x:Name="FilterCB"
+                  Grid.Column="2"
+                  HorizontalAlignment="Center" 
+                  MinHeight="20" MinWidth="180"
+  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+  materialDesign:HintAssist.Hint="Фильтрация"
+  ItemsSource="{Binding ShortStringList}"
+  materialDesign:TextFieldAssist.HasClearButton="True" Width="204" Height="50" SelectionChanged="FilterCB_SelectionChanged"/>
+        <ComboBox x:Name="SortCB"
+                  Grid.Column="1"
+                  HorizontalAlignment="Center" 
+                  MinHeight="20" MinWidth="180"
+  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+  materialDesign:HintAssist.Hint="Сортировака"
+  ItemsSource="{Binding ShortStringList}"
+  materialDesign:TextFieldAssist.HasClearButton="True" Width="204" Height="50" SelectionChanged="SortCB_SelectionChanged"/>
+    </Grid>
+</Window>

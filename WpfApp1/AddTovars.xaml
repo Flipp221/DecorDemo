@@ -1,0 +1,93 @@
+﻿<Window x:Class="WpfApp1.AddTovars"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="AddTovars" Height="700" Width="259.274" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#B3F4E9">
+    <Grid>
+        <TextBox x:Name="NameTB"
+                 Text="{Binding Name}"
+  materialDesign:HintAssist.Hint="Наименование"
+  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+  VerticalAlignment="Top" Margin="10,10,10,0" />
+        <Grid
+  Width="124">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="491*"/>
+                <RowDefinition Height="209*"/>
+            </Grid.RowDefinitions>
+            <Button
+    Style="{StaticResource MaterialDesignOutlinedButton}"
+    materialDesign:ButtonProgressAssist.Value="-1"
+    materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+    materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+    Content="Сохранить"
+    Margin="2,167,2,10"
+    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="Button_Click" Grid.Row="1" />
+        </Grid>
+        <Image x:Name="img" HorizontalAlignment="Left" Height="100" Margin="10,541,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button
+            Style="{StaticResource MaterialDesignOutlinedButton}"
+            materialDesign:ButtonProgressAssist.Value="-1"
+            materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+            materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+            Content="Загрузить"
+            Margin="131,589,8,79"
+            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Click="Button_Click_1"/>
+        <ComboBox x:Name="ProizvCB"
+            SelectedItem="{Binding Proizvoditel}"
+            DisplayMemberPath="Name"
+            Style="{StaticResource MaterialDesignOutlinedComboBox}"
+            materialDesign:HintAssist.Hint="Производитель"
+            ItemsSource="{Binding ShortStringList}"
+            materialDesign:TextFieldAssist.HasClearButton="True" Margin="10,178,10,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="UnitOnesTB"
+            Text="{Binding UnitOnes}"
+            materialDesign:HintAssist.Hint="Unit"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            VerticalAlignment="Top" Margin="10,52,10,0" />
+        <TextBox x:Name="PriceTB"
+            Text="{Binding Price}"
+            materialDesign:HintAssist.Hint="Цена"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            VerticalAlignment="Top" Margin="10,94,10,0" />
+        <TextBox x:Name="DiscountTB"
+            Text="{Binding PossibleDiscount}"
+            materialDesign:HintAssist.Hint="Возможная скидка"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            VerticalAlignment="Top" Margin="10,136,10,0" />
+        <TextBox x:Name="DiscTB"
+            Text="{Binding Discount}"
+            materialDesign:HintAssist.Hint="Скидка"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            VerticalAlignment="Top" Margin="11,343,9,0" />
+        <ComboBox x:Name="PostavshCB"
+            SelectedItem="{Binding Postavshik}"
+            DisplayMemberPath="Name"
+            Style="{StaticResource MaterialDesignOutlinedComboBox}"
+            materialDesign:HintAssist.Hint="Поставщик"
+            ItemsSource="{Binding ShortStringList}"
+            materialDesign:TextFieldAssist.HasClearButton="True" Margin="10,233,10,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="TypeTCB"
+            SelectedItem="{Binding TypeT}"
+            DisplayMemberPath="Name"
+            Style="{StaticResource MaterialDesignOutlinedComboBox}"
+            materialDesign:HintAssist.Hint="Тип Товара"
+            ItemsSource="{Binding ShortStringList}"
+            materialDesign:TextFieldAssist.HasClearButton="True" Margin="10,288,10,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="CountTB"
+            Text="{Binding CountStock}"
+            materialDesign:HintAssist.Hint="Кол-во на складе"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            VerticalAlignment="Top" Margin="11,385,9,0" />
+        <TextBox x:Name="DescriptionTB"
+            Text="{Binding Description}"
+            materialDesign:HintAssist.Hint="Описание"
+                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextAlignment="Center"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            VerticalAlignment="Top" Margin="12,427,8,0" Height="103" />
+    </Grid>
+</Window>
